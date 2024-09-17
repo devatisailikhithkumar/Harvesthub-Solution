@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contracts - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Contracts</h1>
+            <a href="dashboard.html">Dashboard</a>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+    <main>
+        <section class="content">
+            <h2>Manage Your Contracts</h2>
+            <form id="contractForm">
+                <input type="text" id="contractTitle" placeholder="Contract Title" required>
+                <textarea id="contractTerms" placeholder="Contract Terms" required></textarea>
+                <input type="date" id="startDate" required>
+                <input type="date" id="endDate" required>
+                <button type="button" onclick="submitContract()">Submit Contract</button>
+            </form>
+            <div id="contractList">
+                <!-- List of contracts will be dynamically populated here -->
+            </div>
+        </section>
+    </main>
+    <script src="contracts.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Form Styling */
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Register</h1>
+            <a href="index.html">Home</a>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+
+    <!-- Main Content for Registration -->
+    <main>
+        <section class="form-container">
+            <form id="registerForm">
+                <h2>Create an Account</h2>
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <select id="role" required>
+                    <option value="farmer">Farmer</option>
+                    <option value="buyer">Buyer</option>
+                </select>
+                <button type="button" onclick="registerUser()">Register</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Set the language
+                utterance.onstart = () => console.log(`Speaking in ${lang}`);
+                utterance.onerror = (event) => console.error('SpeechSynthesisUtterance error:', event);
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `
+                    Register page. Please fill in the form to create an account. 
+                    Enter your name, email, password, and choose your role as either Farmer or Buyer. 
+                    Click the Register button to complete the registration.
+                `;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>

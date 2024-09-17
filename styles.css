@@ -1,0 +1,265 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header nav {
+    margin-top: 1rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #FFC107;
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero {
+    color: #050505;
+    padding: 2rem;
+    border-radius: 4.0px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 2rem;
+}
+
+form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+form input, form select, form button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border: 1px solid #fdfcfc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #388E3C;
+}
+
+/* Content Styles */
+.content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Button Styles */
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #388E3C;
+}
+/* Logo Styles */
+.logo {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.logo img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+/* Adjust Header Styles to Accommodate Logo */
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-left: 15px; /* Space between logo and title */
+    color: #fff; /* Ensure text is visible on the background */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header nav {
+    margin-top: 0; /* Align navigation to the center */
+}
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-image: url('images/cover-crops.png'); /* Updated path */
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+/* Crop List Styles */
+#cropList {
+    display: flex;  /* Use flexbox to arrange crops horizontally */
+    flex-wrap: wrap;  /* Allow wrapping to the next line if needed */
+    list-style: none;  /* Remove default list style */
+    padding: 0;  /* Remove default padding */
+    margin: 0;  /* Remove default margin */
+    gap: 20px;  /* Add some spacing between crop items */
+    justify-content: center;  /* Center crops horizontally */
+    align-items: center;  /* Align items vertically */
+}
+
+#cropList li {
+    display: flex;
+    flex-direction: column;  /* Arrange image and text in a column */
+    align-items: center;  /* Center the content within each list item */
+    text-align: center;  /* Center text alignment */
+    background-color: #fff;  /* White background for crop items */
+    padding: 15px;  /* Padding around crop items */
+    border-radius: 10px;  /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow effect */
+    max-width: 150px;  /* Limit the width of each crop item */
+}
+
+#cropList li img {
+    max-width: 100%;  /* Ensure image fills its container */
+    height: auto;  /* Maintain aspect ratio */
+    border-radius: 8px;  /* Rounded corners for images */
+    margin-bottom: 10px;  /* Space between image and text */
+}
+
+#cropList li p {
+    font-size: 1rem;  /* Font size for crop text */
+    color: #333;  /* Text color */
+}
+
+/* Button Styles */
+button {
+    margin-top: 20px;  /* Space above the button */
+    background-color: #4CAF50;  /* Button background color */
+    color: white;  /* Button text color */
+    padding: 10px 20px;  /* Padding for button */
+    border: none;  /* Remove default border */
+    border-radius: 5px;  /* Rounded button corners */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s;  /* Smooth transition effect */
+}
+
+button:hover {
+    background-color: #388E3C;  /* Hover background color */
+}
+label {
+    margin-right: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+

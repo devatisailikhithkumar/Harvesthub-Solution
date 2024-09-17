@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Form Styling */
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Profile</h1>
+            <a href="javascript:void(0);" id="dashboardLink">Dashboard</a>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+    
+    <!-- Main Content for Profile -->
+    <main>
+        <section class="form-container">
+            <form id="profileForm">
+                <h2>Update Profile</h2>
+                <input type="text" id="profileName" placeholder="Name">
+                <input type="email" id="profileEmail" placeholder="Email">
+                <input type="password" id="profilePassword" placeholder="Password">
+                <button type="button" onclick="updateProfile()">Update</button>
+            </form>
+        </section>
+    </main>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dashboardLink = document.getElementById('dashboardLink');
+
+            // Check user role from localStorage
+            const user = JSON.parse(localStorage.getItem('user'));
+            console.log('User Data:', user); // Debug log
+            if (user) {
+                if (user.role === 'farmer') {
+                    dashboardLink.href = 'dashboard-farmer.html';
+                } else if (user.role === 'buyer') {
+                    dashboardLink.href = 'dashboard-buyer.html';
+                }
+                console.log('Dashboard Link:', dashboardLink.href); // Debug log
+            } else {
+                dashboardLink.href = 'index.html'; // Fallback if no user is logged in
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Set the language
+                utterance.onstart = () => console.log(`Speaking in ${lang}`);
+                utterance.onerror = (event) => console.error('SpeechSynthesisUtterance error:', event);
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `
+                    Profile Update Page. You can update your name, email, and password here. 
+                    Click the Update button to save your changes.
+                `;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>

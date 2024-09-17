@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Farmer Dashboard</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </nav>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+
+    <!-- Main Content for Farmer Dashboard -->
+    <main>
+        <section class="content">
+            <!-- Manage Contracts Section -->
+            <div class="card">
+                <h2>Manage Your Contracts</h2>
+                <ul id="contractList">
+                    <!-- Contracts will be dynamically populated -->
+                </ul>
+                <button onclick="createNewContract()">Create New Contract</button>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+
+            <!-- Crop Management Section -->
+            <div class="card">
+                <h2>Manage Your Crops</h2>
+                <button onclick="addNewCrop()">Add New Crop</button>
+                <ul id="cropList">
+                    <!-- List of crops added by the farmer -->
+                </ul>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+
+            <!-- View Crop Requests Section -->
+            <div class="card">
+                <h2>Buyer Crop Requests</h2>
+                <ul id="cropRequestList">
+                    <!-- Crop requests from buyers will be dynamically populated -->
+                </ul>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="contracts.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

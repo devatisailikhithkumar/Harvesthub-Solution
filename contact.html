@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Contact Us</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+                <a href="contracts.html">Contracts</a>
+                <a href="logout.html">Logout</a>
+            </nav>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+    
+    <main>
+        <section class="contact-form">
+            <h2>Get in Touch</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HARVESTHUB SOLUTION</p>
+    </footer>
+
+    <script>
+        document.getElementById('speak').addEventListener('click', function() {
+            const text = document.querySelector('main').innerText; // Adjust this selector if needed
+            const lang = document.getElementById('language').value;
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+
+            // Check if the browser supports speech synthesis
+            if ('speechSynthesis' in window) {
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Your browser does not support speech synthesis.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Flexbox for horizontal layout */
+        .content-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            flex: 1;
+            margin: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for lists */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Use flexbox for horizontal layout */
+            flex-wrap: wrap; /* Allow wrapping if there are too many items */
+            justify-content: space-around; /* Space items evenly */
+        }
+
+        ul li {
+            margin: 10px;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column; /* Align image and text vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        /* Styling for negotiation section */
+        .card div {
+            margin-top: 10px;
+        }
+
+        .card input {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .card button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Buyer Dashboard</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content for Buyer Dashboard -->
+    <main>
+        <section class="content-row">
+            <!-- Available Crops Section -->
+            <div class="card">
+                <h2>Available Crops</h2>
+                <ul id="cropList">
+                    <li>
+                        <img src="images/natural-wheat.jpg" alt="Wheat" />
+                        Wheat - ₹30.50/kg
+                        <div>
+                            <input type="number" id="wheatPrice" placeholder="Propose price" />
+                            <button onclick="negotiatePrice('Wheat')">Negotiate Price</button>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/corn.jpeg" alt="Corn" />
+                        Corn - ₹20.40/kg
+                        <div>
+                            <input type="number" id="cornPrice" placeholder="Propose price" />
+                            <button onclick="negotiatePrice('Corn')">Negotiate Price</button>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/barley.jpeg" alt="Barley" />
+                        Barley - ₹40.60/kg
+                        <div>
+                            <input type="number" id="barleyPrice" placeholder="Propose price" />
+                            <button onclick="negotiatePrice('Barley')">Negotiate Price</button>
+                        </div>
+                    </li>
+                    <!-- New Crops Added -->
+                    <li>
+                        <img src="images/paddy.jpeg" alt="Rice" />
+                        Rice - ₹36.70/kg
+                        <div>
+                            <input type="number" id="ricePrice" placeholder="Propose price" />
+                            <button onclick="negotiatePrice('Rice')">Negotiate Price</button>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/pot.jpeg" alt="Potatoes" />
+                        Potatoes - ₹28.30/kg
+                        <div>
+                            <input type="number" id="potatoesPrice" placeholder="Propose price" />
+                            <button onclick="negotiatePrice('Potatoes')">Negotiate Price</button>
+                        </div>
+                    </li>
+                </ul>
+                <button onclick="requestCrop()">Request Crop</button>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+
+            <!-- View Contracts Section -->
+            <div class="card">
+                <h2>Your Contracts</h2>
+                <ul id="buyerContractList">
+                    <!-- Contracts with farmers will be dynamically populated -->
+                </ul>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+
+            <!-- Manage Orders Section -->
+            <div class="card">
+                <h2>Manage Your Orders</h2>
+                <ul id="orderList">
+                    <!-- Orders placed by the buyer will be dynamically populated -->
+                </ul>
+                <button onclick="placeNewOrder()">Place New Order</button>
+                <div>
+                    <label for="language">Choose your language:</label>
+                    <select id="language">
+                        <option value="en-US">English</option>
+                        <option value="te-IN">Telugu</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="kn-IN">Kannada</option>
+                        <option value="ta-IN">Tamil</option>
+                    </select>
+                </div>
+            
+                <button id="speak">Speak</button>
+            </div>
+        </section>
+     </main>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Logout</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>You have been logged out</h2>
+            <p>Thank you for using HARVESTHUB SOLUTION. You have been successfully logged out.</p>
+            <p><a href="index.html">Return to Home</a></p>
+            <p><a href="login.html">Login Again</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HARVESTHUB SOLUTION</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Set the language
+                utterance.onstart = () => console.log(`Speaking in ${lang}`);
+                utterance.onerror = (event) => console.error('SpeechSynthesisUtterance error:', event);
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `
+                    You have been logged out of HARVESTHUB SOLUTION. 
+                    Thank you for using our service. 
+                    You have been successfully logged out. 
+                    You can return to the home page or log in again using the provided links.
+                `;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>

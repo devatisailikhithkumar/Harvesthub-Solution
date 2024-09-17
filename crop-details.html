@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Details - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="tts.js" defer></script> <!-- Include TTS JavaScript file -->
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo">
+        </a>
+        <h1>Crop Details</h1>
+    </header>
+    <main>
+        <div id="cropDetails" class="card">
+            <h2 id="cropName"></h2>
+            <p id="cropDescription"></p>
+            <label for="languageSelect">Select Language:</label>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="te">Telugu</option>
+                <option value="hi">Hindi</option>
+                <option value="kn">Kannada</option>
+                <option value="ta">Tamil</option>
+            </select>
+            <button id="readAloudButton">Read Aloud</button> <!-- Add TTS button -->
+        </div>
+    </main>
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cropName = getQueryParam('crop');
+            const nameElement = document.getElementById('cropName');
+            const descriptionElement = document.getElementById('cropDescription');
+            const readAloudButton = document.getElementById('readAloudButton');
+            const languageSelect = document.getElementById('languageSelect');
+
+            // Simulate fetching crop details
+            const cropDetails = {
+                'Wheat': 'Wheat is a cereal grain used for food. Price: $30.50/kg.',
+                'Corn': 'Corn is a large grain plant first domesticated by indigenous peoples in southern Mexico. Price: $20.40/kg.',
+                'Barley': 'Barley is a cereal grain that has been used as food, as well as in brewing. Price: $10.60/kg.'
+            };
+
+            if (cropDetails[cropName]) {
+                nameElement.textContent = cropName;
+                descriptionElement.textContent = cropDetails[cropName];
+            } else {
+                nameElement.textContent = 'Crop not found';
+                descriptionElement.textContent = 'Details not available.';
+            }
+
+            // Event listener for the TTS button
+            readAloudButton.addEventListener('click', () => {
+                const textToSpeak = `${nameElement.textContent}. ${descriptionElement.textContent}`;
+                const selectedLanguage = languageSelect.value; // Get the selected language
+                speakText(textToSpeak, selectedLanguage); // Call TTS function with selected language
+            });
+        });
+
+        // Function to read text aloud using Web Speech API
+        function speakText(text, lang) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang; // Use the selected language
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

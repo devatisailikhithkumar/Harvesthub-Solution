@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negotiate Price - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Form Styling */
+        .negotiate-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .negotiate-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .negotiate-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .negotiate-container input,
+        .negotiate-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .negotiate-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .negotiate-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo" />
+            </a>
+            <h1>Negotiate Price</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content for Negotiation -->
+    <main>
+        <div class="negotiate-container">
+            <h2>Negotiate Price for Crop</h2>
+            <form id="negotiateForm">
+                <label for="crop">Crop:</label>
+                <input type="text" id="crop" name="crop" readonly />
+
+                <label for="currentPrice">Current Price:</label>
+                <input type="text" id="currentPrice" name="currentPrice" readonly />
+
+                <label for="proposedPrice">Propose New Price:</label>
+                <input type="number" id="proposedPrice" name="proposedPrice" required />
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Add any comments or justifications for your proposed price..."></textarea>
+
+                <button type="button" onclick="submitNegotiation()">Submit Negotiation</button>
+            </form>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+        
+            <button id="speak">Speak</button>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Set the language
+                utterance.onstart = () => console.log(`Speaking in ${lang}`);
+                utterance.onerror = (event) => console.error('SpeechSynthesisUtterance error:', event);
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `
+                    Negotiate Price for Crop. 
+                    Enter the crop name and current price. 
+                    Propose a new price and add any comments or justifications. 
+                    Click Submit Negotiation to finalize your proposal.
+                `;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo">
+            </a>
+            <h1>HARVESTHUB SOLUTION</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+                <a href="login.html">Login</a>
+                <a href="contact.html">Contact Us</a> <!-- Added link -->
+            </nav>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Connecting Farmers with Buyers</h2>
+            <p>Secure and efficient contract farming agreements for stable income and reliable produce.</p>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Use the selected language
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `Welcome to HARVESTHUB SOLUTION. Connecting Farmers with Buyers. Secure and efficient contract farming agreements for stable income and reliable produce.`;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>

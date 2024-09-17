@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place New Order - HARVESTHUB SOLUTION</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/harvesthub_Solution.png" alt="HARVESTHUB SOLUTION Logo">
+            </a>
+            <h1>Place New Order</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="profile.html">Profile</a>
+                <a href="logout.html">Logout</a>
+            </nav>
+            <div>
+                <label for="language">Choose your language:</label>
+                <select id="language">
+                    <option value="en-US">English</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="kn-IN">Kannada</option>
+                    <option value="ta-IN">Tamil</option>
+                </select>
+            </div>
+            <button id="speak">Speak</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>Order Form</h2>
+            <form id="orderForm">
+                <label for="orderCrop">Crop Name:</label>
+                <input type="text" id="orderCrop" name="orderCrop" required>
+                <label for="orderQuantity">Quantity:</label>
+                <input type="number" id="orderQuantity" name="orderQuantity" required>
+                <label for="orderDate">Delivery Date:</label>
+                <input type="date" id="orderDate" name="orderDate" required>
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speakButton = document.getElementById('speak');
+            const languageSelect = document.getElementById('language');
+
+            // Function to speak text aloud
+            function speakText(text, lang) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang; // Set the language
+                utterance.onstart = () => console.log(`Speaking in ${lang}`);
+                utterance.onerror = (event) => console.error('SpeechSynthesisUtterance error:', event);
+                speechSynthesis.speak(utterance);
+            }
+
+            // Event listener for the Speak button
+            speakButton.addEventListener('click', () => {
+                const selectedLanguage = languageSelect.value;
+                const textToSpeak = `
+                    Welcome to the Place New Order page. 
+                    Please fill out the form below to place a new order. 
+                    Enter the crop name, quantity, and delivery date. 
+                    Click the Place Order button to submit your order.
+                `;
+                speakText(textToSpeak, selectedLanguage);
+            });
+        });
+    </script>
+</body>
+</html>
